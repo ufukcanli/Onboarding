@@ -11,6 +11,10 @@ class ViewController: UIViewController {
     
     let peopleImageView = UIImageView()
     let descriptionTextView = UITextView()
+    let previousButton = UIButton(type: .system)
+    let nextButton = UIButton(type: .system)
+    let pageControl = UIPageControl()
+    let bottomStackView = UIStackView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +34,41 @@ class ViewController: UIViewController {
         attributedText.append(NSAttributedString(string: "\n\n\nPin your favorite restaurants and create your own food guide", attributes: [.font: UIFont.preferredFont(forTextStyle: .subheadline), .foregroundColor: UIColor.secondaryLabel]))
         descriptionTextView.attributedText = attributedText
         descriptionTextView.isEditable = false
+        descriptionTextView.isScrollEnabled = false
         descriptionTextView.textAlignment = .center
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    func configureBottomStackView() {
+        previousButton.setTitle("PREV", for: .normal)
+        previousButton.setTitleColor(.systemGray, for: .normal)
+        previousButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = 3
+        pageControl.currentPageIndicatorTintColor = .systemBlue
+        pageControl.pageIndicatorTintColor = .systemGray
+        
+        nextButton.setTitle("NEXT", for: .normal)
+        nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+                
+        bottomStackView.addArrangedSubview(previousButton)
+        bottomStackView.addArrangedSubview(pageControl)
+        bottomStackView.addArrangedSubview(nextButton)
+        
+        bottomStackView.axis = .horizontal
+        bottomStackView.distribution = .fillEqually
+        bottomStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(bottomStackView)
+    }
+    
     func configureViewController() {
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .systemBackground
         
         configurePeopleImageView()
         configureDescriptionTextView()
+        configureBottomStackView()
         
         NSLayoutConstraint.activate([
             peopleImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
@@ -46,10 +76,15 @@ class ViewController: UIViewController {
             peopleImageView.widthAnchor.constraint(equalToConstant: 333),
             peopleImageView.heightAnchor.constraint(equalToConstant: 229),
             
-            descriptionTextView.topAnchor.constraint(equalTo: peopleImageView.bottomAnchor, constant: 150),
-            descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            descriptionTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            descriptionTextView.topAnchor.constraint(equalTo: peopleImageView.bottomAnchor, constant: 100),
+            descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            descriptionTextView.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor, constant: -100),
+            
+            bottomStackView.heightAnchor.constraint(equalToConstant: 100),
+            bottomStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 
