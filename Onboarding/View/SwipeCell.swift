@@ -59,7 +59,7 @@ class SwipeCell: UICollectionViewCell {
         addSubview(descriptionStackView)
         
         NSLayoutConstraint.activate([
-            peopleImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
+            peopleImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 150),
             peopleImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             peopleImageView.widthAnchor.constraint(equalToConstant: 333),
             peopleImageView.heightAnchor.constraint(equalToConstant: 229),
