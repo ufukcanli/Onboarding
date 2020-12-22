@@ -16,6 +16,8 @@ class SwipeViewController: UICollectionViewController, UICollectionViewDelegateF
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .systemBackground
         collectionView.register(SwipeCell.self, forCellWithReuseIdentifier: SwipeCell.reuseIdentifier)
     }
     

@@ -67,7 +67,7 @@ class SwipeCell: UICollectionViewCell {
             descriptionStackView.topAnchor.constraint(equalTo: peopleImageView.bottomAnchor, constant: 100),
             descriptionStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             descriptionStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            descriptionStackView.heightAnchor.constraint(equalToConstant: 100)
+            descriptionStackView.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
     
