@@ -58,16 +58,48 @@
 		D21C970825923E53000BB52C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				D21C970925923E53000BB52C /* AppDelegate.swift */,
-				D21C970B25923E53000BB52C /* SceneDelegate.swift */,
+				D28417AA25927DC500F7BB40 /* Model */,
+				D28417AB25927DCB00F7BB40 /* View */,
+				D28417AC25927DD900F7BB40 /* Controller */,
 				D21C970D25923E53000BB52C /* ViewController.swift */,
-				D28417A625927A2700F7BB40 /* SwipeItem.swift */,
-				D21C972325926078000BB52C /* SwipeCell.swift */,
-				D21C971F25925942000BB52C /* SwipeViewController.swift */,
+				D28417AD25927DEF00F7BB40 /* Supporting Files */,
 				D21C971225923E57000BB52C /* Assets.xcassets */,
 				D21C971725923E57000BB52C /* Info.plist */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		D28417AA25927DC500F7BB40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D28417A625927A2700F7BB40 /* SwipeItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D28417AB25927DCB00F7BB40 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D21C972325926078000BB52C /* SwipeCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D28417AC25927DD900F7BB40 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D21C971F25925942000BB52C /* SwipeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D28417AD25927DEF00F7BB40 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D21C970925923E53000BB52C /* AppDelegate.swift */,
+				D21C970B25923E53000BB52C /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
