@@ -12,42 +12,51 @@ class SwipeCell: UICollectionViewCell {
     static let reuseIdentifier = "SwipeCell"
     
     let peopleImageView = UIImageView()
-    let descriptionTextView = UITextView()
+    let headlineLabel = UILabel()
+    let subheadlineLabel = UILabel()
+    let descriptionStackView = UIStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configureCell()
+        configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configurePeopleImageView() {
+    func set(image: String, headline: String, subheadline: String) {
+        peopleImageView.image = UIImage(named: image)
+        headlineLabel.text = headline
+        subheadlineLabel.text = subheadline
+    }
+    
+    func configure() {
+        backgroundColor = .systemBackground
+        
+        peopleImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(peopleImageView)
         
-        peopleImageView.image = UIImage(named: "onboarding-1")
-        peopleImageView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    func configureDescriptionTextView() {
-        addSubview(descriptionTextView)
+        headlineLabel.textAlignment = .center
+        headlineLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        headlineLabel.textColor = .label
+        headlineLabel.numberOfLines = 0
         
-        let attributedText = NSMutableAttributedString(string: "CREATE YOUR OWN FOOD GUIDE", attributes: [.font: UIFont.preferredFont(forTextStyle: .headline), .foregroundColor: UIColor.label])
-        attributedText.append(NSAttributedString(string: "\n\n\nPin your favorite restaurants and create your own food guide", attributes: [.font: UIFont.preferredFont(forTextStyle: .subheadline), .foregroundColor: UIColor.secondaryLabel]))
+        subheadlineLabel.textAlignment = .center
+        subheadlineLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        subheadlineLabel.textColor = .secondaryLabel
+        subheadlineLabel.numberOfLines = 0
         
-        descriptionTextView.attributedText = attributedText
-        descriptionTextView.isEditable = false
-        descriptionTextView.isScrollEnabled = false
-        descriptionTextView.textAlignment = .center
-        descriptionTextView.backgroundColor = .systemBackground
-        descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    func configureCell() {        
-        configurePeopleImageView()
-        configureDescriptionTextView()
+        descriptionStackView.addArrangedSubview(headlineLabel)
+        descriptionStackView.addArrangedSubview(subheadlineLabel)
+        
+        descriptionStackView.axis = .vertical
+        descriptionStackView.spacing = 10
+        descriptionStackView.alignment = .center
+        descriptionStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(descriptionStackView)
         
         NSLayoutConstraint.activate([
             peopleImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
@@ -55,10 +64,10 @@ class SwipeCell: UICollectionViewCell {
             peopleImageView.widthAnchor.constraint(equalToConstant: 333),
             peopleImageView.heightAnchor.constraint(equalToConstant: 229),
             
-            descriptionTextView.topAnchor.constraint(equalTo: peopleImageView.bottomAnchor, constant: 100),
-            descriptionTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            descriptionTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            descriptionTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
+            descriptionStackView.topAnchor.constraint(equalTo: peopleImageView.bottomAnchor, constant: 100),
+            descriptionStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            descriptionStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            descriptionStackView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
     

@@ -8,6 +8,10 @@
 import UIKit
 
 class SwipeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    let pageImages = ["onboarding-1", "onboarding-2", "onboarding-3"]
+    let pageHeadings = ["CREATE YOUR OWN FOOD GUIDE", "SHOW YOU THE LOCATION", "DISCOVER GREAT RESTAURANTS"]
+    var pageSubHeadings = ["Pin your favorite restaurants and create your own food guide", "Search and locate your favourite restaurant on Maps", "Find restaurants shared by your friends and other foodies"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,11 +20,12 @@ class SwipeViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return pageImages.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SwipeCell.reuseIdentifier, for: indexPath) as! SwipeCell
+        cell.set(image: pageImages[indexPath.row], headline: pageHeadings[indexPath.row], subheadline: pageSubHeadings[indexPath.row])
         return cell
     }
     
