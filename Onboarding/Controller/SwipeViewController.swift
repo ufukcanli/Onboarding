@@ -32,7 +32,7 @@ class SwipeViewController: UICollectionViewController, UICollectionViewDelegateF
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SwipeCell.reuseIdentifier, for: indexPath) as! SwipeCell
-        let swipeItem = swipeItems[indexPath.row]
+        let swipeItem = swipeItems[indexPath.item]
         cell.update(image: swipeItem.image, headline: swipeItem.headline, subheadline: swipeItem.subheadline)
         return cell
     }
@@ -45,18 +45,39 @@ class SwipeViewController: UICollectionViewController, UICollectionViewDelegateF
         return 0
     }
     
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let x = targetContentOffset.pointee.x
+        pageControl.currentPage = Int(x / view.frame.width)
+    }
+    
+    @objc func previousButtonDidTap() {
+        let prevIndex = max(pageControl.currentPage - 1, 0)
+        let indexPath = IndexPath(item: prevIndex, section: 0)
+        pageControl.currentPage = prevIndex
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    @objc func nextButtonDidTap() {
+        let nextIndex = min(pageControl.currentPage + 1, swipeItems.count - 1)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
     func configureBottomStackView() {
         previousButton.setTitle("PREV", for: .normal)
         previousButton.setTitleColor(.systemGray, for: .normal)
         previousButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        previousButton.addTarget(self, action: #selector(previousButtonDidTap), for: .touchUpInside)
         
         pageControl.currentPage = 0
-        pageControl.numberOfPages = 3
+        pageControl.numberOfPages = swipeItems.count
         pageControl.currentPageIndicatorTintColor = .systemBlue
         pageControl.pageIndicatorTintColor = .systemGray
         
         nextButton.setTitle("NEXT", for: .normal)
         nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
                 
         bottomStackView.addArrangedSubview(previousButton)
         bottomStackView.addArrangedSubview(pageControl)
@@ -70,6 +91,7 @@ class SwipeViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     func configureViewController() {
+        collectionView.isPagingEnabled = true
         collectionView.backgroundColor = .systemBackground
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(SwipeCell.self, forCellWithReuseIdentifier: SwipeCell.reuseIdentifier)
