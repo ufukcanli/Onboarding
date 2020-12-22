@@ -9,8 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let peopleImageView = UIImageView()
-    let descriptionTextView = UITextView()
     let previousButton = UIButton(type: .system)
     let nextButton = UIButton(type: .system)
     let pageControl = UIPageControl()
@@ -20,23 +18,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
                 
         configureViewController()
-    }
-    
-    func configurePeopleImageView() {
-        view.addSubview(peopleImageView)
-        peopleImageView.image = UIImage(named: "onboarding-1")
-        peopleImageView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    func configureDescriptionTextView() {
-        view.addSubview(descriptionTextView)
-        let attributedText = NSMutableAttributedString(string: "CREATE YOUR OWN FOOD GUIDE", attributes: [.font: UIFont.preferredFont(forTextStyle: .headline), .foregroundColor: UIColor.label])
-        attributedText.append(NSAttributedString(string: "\n\n\nPin your favorite restaurants and create your own food guide", attributes: [.font: UIFont.preferredFont(forTextStyle: .subheadline), .foregroundColor: UIColor.secondaryLabel]))
-        descriptionTextView.attributedText = attributedText
-        descriptionTextView.isEditable = false
-        descriptionTextView.isScrollEnabled = false
-        descriptionTextView.textAlignment = .center
-        descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func configureBottomStackView() {
@@ -65,22 +46,10 @@ class ViewController: UIViewController {
     
     func configureViewController() {
         view.backgroundColor = .systemBackground
-        
-        configurePeopleImageView()
-        configureDescriptionTextView()
+
         configureBottomStackView()
         
         NSLayoutConstraint.activate([
-            peopleImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            peopleImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            peopleImageView.widthAnchor.constraint(equalToConstant: 333),
-            peopleImageView.heightAnchor.constraint(equalToConstant: 229),
-            
-            descriptionTextView.topAnchor.constraint(equalTo: peopleImageView.bottomAnchor, constant: 100),
-            descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            descriptionTextView.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor, constant: -100),
-            
             bottomStackView.heightAnchor.constraint(equalToConstant: 100),
             bottomStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
