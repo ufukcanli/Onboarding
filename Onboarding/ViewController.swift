@@ -26,11 +26,11 @@ class ViewController: UIViewController {
     
     func configureDescriptionTextView() {
         view.addSubview(descriptionTextView)
+        let attributedText = NSMutableAttributedString(string: "CREATE YOUR OWN FOOD GUIDE", attributes: [.font: UIFont.preferredFont(forTextStyle: .headline), .foregroundColor: UIColor.label])
+        attributedText.append(NSAttributedString(string: "\n\n\nPin your favorite restaurants and create your own food guide", attributes: [.font: UIFont.preferredFont(forTextStyle: .subheadline), .foregroundColor: UIColor.secondaryLabel]))
+        descriptionTextView.attributedText = attributedText
         descriptionTextView.isEditable = false
-        descriptionTextView.text = "CREATE YOUR OWN FOOD GUIDE"
-        descriptionTextView.textColor = .label
         descriptionTextView.textAlignment = .center
-        descriptionTextView.font = UIFont.preferredFont(forTextStyle: .headline)
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
     }
     
