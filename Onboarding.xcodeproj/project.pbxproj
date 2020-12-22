@@ -13,6 +13,7 @@
 		D21C971325923E57000BB52C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D21C971225923E57000BB52C /* Assets.xcassets */; };
 		D21C972025925942000BB52C /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C971F25925942000BB52C /* SwipeViewController.swift */; };
 		D21C972425926078000BB52C /* SwipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C972325926078000BB52C /* SwipeCell.swift */; };
+		D28417A725927A2700F7BB40 /* SwipeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28417A625927A2700F7BB40 /* SwipeItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D21C971725923E57000BB52C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D21C971F25925942000BB52C /* SwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		D21C972325926078000BB52C /* SwipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCell.swift; sourceTree = "<group>"; };
+		D28417A625927A2700F7BB40 /* SwipeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +61,9 @@
 				D21C970925923E53000BB52C /* AppDelegate.swift */,
 				D21C970B25923E53000BB52C /* SceneDelegate.swift */,
 				D21C970D25923E53000BB52C /* ViewController.swift */,
-				D21C971F25925942000BB52C /* SwipeViewController.swift */,
+				D28417A625927A2700F7BB40 /* SwipeItem.swift */,
 				D21C972325926078000BB52C /* SwipeCell.swift */,
+				D21C971F25925942000BB52C /* SwipeViewController.swift */,
 				D21C971225923E57000BB52C /* Assets.xcassets */,
 				D21C971725923E57000BB52C /* Info.plist */,
 			);
@@ -140,6 +143,7 @@
 				D21C972425926078000BB52C /* SwipeCell.swift in Sources */,
 				D21C970C25923E53000BB52C /* SceneDelegate.swift in Sources */,
 				D21C972025925942000BB52C /* SwipeViewController.swift in Sources */,
+				D28417A725927A2700F7BB40 /* SwipeItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

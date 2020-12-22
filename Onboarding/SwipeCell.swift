@@ -26,7 +26,7 @@ class SwipeCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(image: String, headline: String, subheadline: String) {
+    func update(image: String, headline: String, subheadline: String) {
         peopleImageView.image = UIImage(named: image)
         headlineLabel.text = headline
         subheadlineLabel.text = subheadline
